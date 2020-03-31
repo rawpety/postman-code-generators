@@ -121,7 +121,7 @@ self = module.exports = {
     }
     snippet += `url = URI("${sanitize(request.url.toString(), 'url')}")\n\n`;
     if (sanitize(request.url.toString(), 'url').startsWith('https')) {
-      snippet += 'https = Net::HTTP.new(url.host, url.port);\n';
+      snippet += 'https = Net::HTTP.new(url.host, url.port)\n';
       snippet += 'https.use_ssl = true\n\n';
       if (options.requestTimeout) {
         snippet += `https.read_timeout = ${Math.ceil(options.requestTimeout / 1000)}\n`;
@@ -178,7 +178,7 @@ self = module.exports = {
       snippet += 'puts response.read_body\n';
     }
     else {
-      snippet += 'http = Net::HTTP.new(url.host, url.port);\n';
+      snippet += 'http = Net::HTTP.new(url.host, url.port)\n';
       if (options.requestTimeout) {
         snippet += `http.read_timeout = ${Math.ceil(options.requestTimeout / 1000)}\n`;
       }
